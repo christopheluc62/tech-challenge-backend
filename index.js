@@ -8,7 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/crew', async (req, res) => {
-  const [rows] = await db.query('SELECT firstname FROM crew');
+  const [rows] = await db.query(
+    'SELECT firstname FROM crew ORDER BY firstname ASC'
+  );
   res.status(200).json(rows);
 });
 
